@@ -8,8 +8,8 @@ import geni.portal as portal
 import geni.rspec.pg as pg
 
 # Global "constants"
-IMAGE_URN = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU24-64-STD"
-HARDWARE_TYPE = "d430"
+IMAGE_URN = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
+HARDWARE_TYPE = "d710"
 LOCAL_REPO_DIR="/local/repository"
 DEFAULT_SCRIPT_PATH = "{}/bin/hello_world.sh".format(LOCAL_REPO_DIR)
 
