@@ -20,10 +20,9 @@ request = pc.makeRequestRSpec()
 # Add a parameter for the startup script path.
 pc.defineParameter(
     "script_path",
-    "Startup script location"
+    "Startup script location",
     portal.ParameterType.STRING, SCRIPT_PATH,
-    "Filesystem path where the startup script lives. '/local/repository' the location of the local copy of the Git repository for the profile that was used to instantiate this experiment."
-)
+    "Filesystem path where the startup script lives. '/local/repository' the location of the local copy of the Git repository for the profile that was used to instantiate this experiment.")
 
 #
 # Add a filename parameter here for where the output of the startup script
