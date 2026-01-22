@@ -1,0 +1,1 @@
+This repository contains a simple, single node profile script, and a "hello world" script. The profile script must be modified as indicated in the source in order for the hello world script to be run when the node boots.
