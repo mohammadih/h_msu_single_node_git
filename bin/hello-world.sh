@@ -1,10 +1,11 @@
 #!/bin/bash
 
-MYFILE="/var/tmp/$1"
+GENI_GET="/usr/bin/geni-get"
+MYFILE=$1
 
 if [ ! -f $MYFILE ]; then
     touch $MYFILE && \
-	echo "Hello World!" > $MYFILE || \
+	$GENI_GET slice_urn > $MYFILE || \
 	    { echo "Failed to write to $MYFILE"; exit 1; }
 fi
 

@@ -32,7 +32,7 @@ pc.defineParameter(
 # be set to `file_name`. Use the `defineParameter()` call above as a
 # template. Do not simply uncomment the line below. That will not work...
 #
-# portal.context.defineParameter(...)
+# pc.defineParameter(...)
 
 # Process the parameters defined above
 params = pc.bindParameters()
