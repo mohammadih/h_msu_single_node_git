@@ -11,18 +11,19 @@ import geni.rspec.pg as pg
 IMAGE_URN = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
 HARDWARE_TYPE = "d710"
 LOCAL_REPO_DIR="/local/repository"
-DEFAULT_SCRIPT_PATH = "{}/bin/hello_world.sh".format(LOCAL_REPO_DIR)
+SCRIPT_PATH = "{}/bin/hello-world.sh".format(LOCAL_REPO_DIR)
+DEFAULT_DIRECTORY_PATH = "/var/tmp"
 
 # Top level objects needed to create other profile constructs
 pc = portal.Context()
 request = pc.makeRequestRSpec()
 
-# Add a parameter for the startup script path.
+# Parameter specifying the directory path for the startup script's output file.
 pc.defineParameter(
-    "script_path",
-    "Startup script location",
-    portal.ParameterType.STRING, DEFAULT_SCRIPT_PATH,
-    longDescription="Filesystem path where the startup script lives. '/local/repository' the location of the local copy of the Git repository for the profile that was used to instantiate this experiment.")
+    "directory_path",
+    "Hello world directory path",
+    portal.ParameterType.STRING, DEFAULT_DIRECTORY_PATH,
+    longDescription="Filesystem directory path where the output of the 'hello-world' startup script will be created.")
 
 #
 # Add a filename parameter here for where the output of the startup script
@@ -38,10 +39,14 @@ if 'IMAGE_URN' in globals() and IMAGE_URN:
     node.disk_image = IMAGE_URN
 if 'HARDWARE_TYPE' in globals() and HARDWARE_TYPE:
     node.hardware_type = HARDWARE_TYPE
-if hasattr(params, "script_path") and hasattr(params, "file_name"):
+if hasattr(params, "directory_path") and hasattr(params, "file_name"):
     #
-    # Build up a 'startup_script' variable here consisting of the 'script_path'
-    # parameter, followed by a space, followed by the 'file_name' parameter.
+    # Build up a 'startup_script' string variable here consisting of
+    # the SCRIPT_PATH global variable, followed by a space, followed
+    # by the 'directory_path' parameter, followed by a forward slash
+    # ('/'), then followed lastly by the 'file_name' parameter.
+    # Note that parameters are stored as attributes of the parameters
+    # object. E.g., 'params.directory_path'
     #
     # startup_script = ...
     node.addService(pg.Execute(shell="bash", command=startup_script))
