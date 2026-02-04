@@ -20,11 +20,19 @@ request = pc.makeRequestRSpec()
 
 # Parameter specifying the directory path for the startup script's output file.
 pc.defineParameter(
-    name = "file_name",
-    description = "Name of Output file",
+    name = "directory_path",
+    description = "Hello world directory path",
     typ = portal.ParameterType.STRING,
     defaultValue = "hello.txt",
-    longDescription = "Name of the file where the hello world script will write its output.")
+    longDescription = "Filesystem directory path where the output of the 'hello-world' startup script will be created.")
+
+pc.defineParameter(
+    name="file_name",
+    description="Name of output file",
+    typ=portal.ParameterType.STRING,
+    defaultValue="hello.txt",
+    longDescription="Name of the file where the hello world script will write its output."
+)
 
 #
 # *** FIRST REQUIRED CHANGE: Add a filename parameter here for where
