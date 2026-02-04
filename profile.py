@@ -23,7 +23,7 @@ pc.defineParameter(
     name = "directory_path",
     description = "Hello world directory path",
     typ = portal.ParameterType.STRING,
-    defaultValue = "hello.txt",
+    defaultValue = DEFAULT_DIRECTORY_PATH,
     longDescription = "Filesystem directory path where the output of the 'hello-world' startup script will be created.")
 
 pc.defineParameter(
