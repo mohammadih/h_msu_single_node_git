@@ -20,11 +20,11 @@ request = pc.makeRequestRSpec()
 
 # Parameter specifying the directory path for the startup script's output file.
 pc.defineParameter(
-    name = "directory_path",
-    description = "Hello world directory path",
+    name = "file_name",
+    description = "Name of Output file",
     typ = portal.ParameterType.STRING,
-    defaultValue = DEFAULT_DIRECTORY_PATH,
-    longDescription = "Filesystem directory path where the output of the 'hello-world' startup script will be created.")
+    defaultValue = "hello.txt",
+    longDescription = "Name of the file where the hello world script will write its output.")
 
 #
 # *** FIRST REQUIRED CHANGE: Add a filename parameter here for where
@@ -58,7 +58,11 @@ if hasattr(params, "directory_path") and hasattr(params, "file_name"):
     # Note: Don't simply uncomment the line below; doing so will
     # result in a syntax error!
     #
-    # startup_script = "{} ...".format(SCRIPT_PATH, ..)
+    # startup_script = "{}  ...".format(SCRIPT_PATH, ..)
+    startup_script = "{} {}/{}".format(
+    	SCRIPT_PATH,
+    	params.directory_path,
+    	params.file_name)
     node.addService(pg.Execute(shell="bash", command=startup_script))
 
 # The portal expects this function to be called a the end of a profile script.
